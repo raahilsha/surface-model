@@ -22,7 +22,7 @@ set(plots, 'edgecolor', 'none');
 % input ball's position
 gx = 2.5;
 gy = 2.5;
-gz = cos(gx*gy);
+gz = -1 * sqrt(64 - gx ^ 2 - gy ^ 2);
 
 m = 0.01; % kg
 r = 0.01; % m
@@ -30,8 +30,8 @@ g = 9.8; % m/s^2
 
 dt = 0.005; % s
 
-wx = 0;
-wy = 0;
+wx = 75;
+wy = -150;
 time = 0;
 
 maxN = 5000;
@@ -57,8 +57,8 @@ for N = 1:maxN
     delta_x = vx * dt;
     delta_y = vy * dt;
     
-    gx = gx + delta_x * cos(theta_x);
-    gy = gy + delta_y * cos(theta_y);
+    gx = gx + delta_x;
+    gy = gy + delta_y;
     gz = -1 * sqrt(64 - gx ^ 2 - gy ^ 2);
     
     xtravel(N) = gx;
